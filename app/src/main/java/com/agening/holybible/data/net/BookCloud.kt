@@ -1,7 +1,7 @@
 package com.agening.holybible.data.net
 
 import com.agening.holybible.core.Abstract
-import com.agening.holybible.data.BookData
+import com.agening.holybible.core.Book
 import com.google.gson.annotations.SerializedName
 
 //{
@@ -14,13 +14,11 @@ import com.google.gson.annotations.SerializedName
 //}
 //}
 
-data class BookServerModel(
+data class BookCloud(
     @SerializedName("id")
     private val id:Int,
     @SerializedName("name")
     private val name:String
-): Abstract.Object<BookData, BookServerToDataMapper>() {
-    override fun map(mapper: BookServerToDataMapper): BookData {
-        return mapper.map(id, name)
-    }
+): Abstract.Object<Book, BookCloudMapper>() {
+    override fun map(mapper: BookCloudMapper): Book = mapper.map(id, name)
 }
